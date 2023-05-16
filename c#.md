@@ -1095,11 +1095,11 @@ ___
 
 		> 原理:从第一个数据与后一个数据比对，两个数据中，大的数换到后面然后与下一个数比对，循环往复，直到所有数从小到大排列；最后几次若其中一次循环没有交换位置则停止循环
 		>
-		> ![冒泡排序原理图](https://raw.githubusercontent.com/yzxxy010/Image-repository/c0b2c850f65fd7cd38125ffe4412458b7727ca07/bee4633c82a2cbd4263263b35206017d.gif"冒泡排序")
+		> ![冒泡排序原理图](./assets/冒泡排序图.gif"冒泡排序")
 
 2. 数组的属性及方法
 
-	1. 字符串数组转其他数组
+	1. 字符串数组转其他数组 
 
 		> ```c#
 		> g[] sNums = new[] {"1", "2"};
@@ -2598,7 +2598,13 @@ task的创建
 > //以上仅为部分
 > ```
 
-## 10.DEBUG
+## 10.文件的操作
+
+### 1.Filelnfo和Directorylnfo类读取文件和文件夹属性
+
+
+
+## 11.DEBUG
 
 ### 1.异常
 
@@ -2663,7 +2669,7 @@ task的创建
   >
   > 注意：
   >
-  > **try…catch…finally语句中，catch和finally两个最少存在一个，并且finally最多只能有一个**
+  > **try…catch…finally`语句中，`catch`和`finally`两个最少存在一个，并且`finally`最多只能有一个**
 
 
 
