@@ -2602,6 +2602,8 @@ task的创建
 
 ### 1.Filelnfo和Directorylnfo类读取文件和文件夹属性
 
+**注意**：使用此类需要引入`System.IO`  
+
 
 
 ## 11.DEBUG
