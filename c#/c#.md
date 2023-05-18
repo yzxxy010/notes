@@ -298,117 +298,117 @@ ___
 
 1. **字符串前加@**
 
-	> 字符串前加@表示强制不转译。
-	>
-	> 如果你的字符串中有大量的\字符，而不是想用转义，那就写@来取消\转义字符。
+  > [^字符串前加@]:字符串前加@表示强制不转译。
+  >
+  > 如果你的字符串中有大量的\字符，而不是想用转义，那就写@来取消\转义字符。
 
 2. **字符串本质**
 
-	> 字符串本质上就是一个char数组（但是无法改变字符串的内容），所以也可以通过索引进行访问
-	>
-	> ```c#
-	> string str = "abcd";
-	> Console.WriteLine(str[2]);
-	> //最后打印结果为c
-	> ```
+  > 字符串本质上就是一个char数组（但是无法改变字符串的内容），所以也可以通过索引进行访问
+  >
+  > ```c#
+  > string str = "abcd";
+  > Console.WriteLine(str[2]);
+  > //最后打印结果为c
+  > ```
 
 3. **字符串组拼**
 
-	> 字符串加上一个值，那个值会归为字符串类型，而不会当成数值
-	>
-	> ```c#
-	> string s = "字符串";
-	> int a =3;
-	> int b =4;
-	> Console.Write(s+a+b);
-	> //输出结果为 字符串34
-	> //因为a,b是与字符串相加，会自动归类为字符串
-	> ```
-	>
-	> 如果想用字符串加上两个值并让他们相加，应该用括号括起来两个值的运算，这样就会优先运算
-	>
-	> ```c#
-	> string s = "字符串";
-	> int a =3;
-	> int b =4;
-	> Console.Write(s+(a+b));
-	> //输出结果为 字符串7
-	> //因为ab相加用括号括起来了，所以会优先运算
-	> ```
+  > 字符串加上一个值，那个值会归为字符串类型，而不会当成数值
+  >
+  > ```c#
+  > string s = "字符串";
+  > int a =3;
+  > int b =4;
+  > Console.Write(s+a+b);
+  > //输出结果为 字符串34
+  > //因为a,b是与字符串相加，会自动归类为字符串
+  > ```
+  >
+  > 如果想用字符串加上两个值并让他们相加，应该用括号括起来两个值的运算，这样就会优先运算
+  >
+  > ```c#
+  > string s = "字符串";
+  > int a =3;
+  > int b =4;
+  > Console.Write(s+(a+b));
+  > //输出结果为 字符串7
+  > //因为ab相加用括号括起来了，所以会优先运算
+  > ```
 
 4. **字符串长度**
 
-	> ```c#
-	> string name="abc";
-	> Console.WriteLine(name.length);
-	> //name.length中name为字符串名字，length为属性
-	> //name[2]中，[]中的2为索引，因为字符串可以看作为char的数值，所以可以采用数组索引进行单个字符读取
-	> //但是只能读取不能对其改变
-	> ```
+  > ```c#
+  > string name="abc";
+  > Console.WriteLine(name.length);
+  > //name.length中name为字符串名字，length为属性
+  > //name[2]中，[]中的2为索引，因为字符串可以看作为char的数值，所以可以采用数组索引进行单个字符读取
+  > //但是只能读取不能对其改变
+  > ```
 
 5. **StringBuilder类**
 
-	此类位于system.Text命名空间下
+  此类位于system.Text命名空间下
 
-	1. **创建StringBuilder对象**
+  1. **创建StringBuilder对象**
 
-		> ```c#
-		> StringBuilder sb = new StringBuilder ("www.taikr. com");//实例化一个对象，并追加内容
-		> StringBuilder sb = new StringBuilder (20);//实例化一个对象，容量为20
-		> StringBuilder sb = new StringBuilder ("www.devsiki.com",100);//创建一个对象，容量为100，并追加内容
-		> //容量不是最大容量，如果超出容量会自动扩容
-		> ```
+  	> ```c#
+  	> StringBuilder sb = new StringBuilder ("www.taikr. com");//实例化一个对象，并追加内容
+  	> StringBuilder sb = new StringBuilder (20);//实例化一个对象，容量为20
+  	> StringBuilder sb = new StringBuilder ("www.devsiki.com",100);//创建一个对象，容量为100，并追加内容
+  	> //容量不是最大容量，如果超出容量会自动扩容
+  	> ```
 
-	2. **StringBuilder类的方法**
+  2. **StringBuilder类的方法**
 
-		> Append()方法，给当前字符串追加一个字符
-		>
-		> Insert()追加特定格式的字符串
-		>
-		> Remove()从当前字符串中删除字符
-		>
-		> Replace()在当前字符串中，用某个字符或者字符串全部替换另一个字符或者字符串
-		>
-		> ToString()把当前stringBuilder中存储的字符串，提取成一个不可变的字符串
+  	> Append()方法，给当前字符串追加一个字符
+  	>
+  	> Insert()追加特定格式的字符串
+  	>
+  	> Remove()从当前字符串中删除字符
+  	>
+  	> Replace()在当前字符串中，用某个字符或者字符串全部替换另一个字符或者字符串
+  	>
+  	> ToString()把当前stringBuilder中存储的字符串，提取成一个不可变的字符串
 
 6. **字符串属性及方法**
 
-	| Length：获得当前字符串中字符的个数                           |
-	| ------------------------------------------------------------ |
-	| ToUpper():将字符转换成大写形式                               |
-	| ToLower():将字符串转换成小写形式                             |
-	| Equals(lessonTwo,StringComparison.OrdinalIgnoreCase):比较两个字符串，可以忽略大小写 |
-	| Split()：分割字符串，返回字符串类型的数组。使用正则表达式表示拆分位置[正则表达式](note://WEB9d51db7285ee37fd1590e26a84ee61df) |
-	| Substring()：截取字符串。在截取的时候包含要截取的那个位置。  |
-	| IndexOf():判断某个字符串在字符串中第一次出现的位置，如果没有返回-1、值类型和引用类型在内存上存储的地方不一样。 |
-	| LastIndexOf()：判断某个字符串在字符串中最后一次出现的位置，如果没有同样返回-1 |
-	| StartsWith():判断以....开始                                  |
-	| EndsWith():判断以...结束                                     |
-	| Replace():将字符串中某个字符串替换成一个新的字符串           |
-	| Contains():判断某个字符串是否包含指定的字符串                |
-	| Trim():去掉字符串中前后的空格                                |
-	| TrimEnd()：去掉字符串中结尾的空格                            |
-	| TrimStart()：去掉字符串中前面的空格                          |
-	| string.IsNullOrEmpty():判断一个字符串是否为空或者为null      |
-	| string.Join()：将数组按照指定的字符串连接，返回一个字符串。  |
+  | Length：获得当前字符串中字符的个数                           |
+  | ------------------------------------------------------------ |
+  | ToUpper():将字符转换成大写形式                               |
+  | ToLower():将字符串转换成小写形式                             |
+  | Equals(lessonTwo,StringComparison.OrdinalIgnoreCase):比较两个字符串，可以忽略大小写 |
+  | Split()：分割字符串，返回字符串类型的数组。使用正则表达式表示拆分位置[正则表达式](note://WEB9d51db7285ee37fd1590e26a84ee61df) |
+  | Substring()：截取字符串。在截取的时候包含要截取的那个位置。  |
+  | IndexOf():判断某个字符串在字符串中第一次出现的位置，如果没有返回-1、值类型和引用类型在内存上存储的地方不一样。 |
+  | LastIndexOf()：判断某个字符串在字符串中最后一次出现的位置，如果没有同样返回-1 |
+  | StartsWith():判断以....开始                                  |
+  | EndsWith():判断以...结束                                     |
+  | Replace():将字符串中某个字符串替换成一个新的字符串           |
+  | Contains():判断某个字符串是否包含指定的字符串                |
+  | Trim():去掉字符串中前后的空格                                |
+  | TrimEnd()：去掉字符串中结尾的空格                            |
+  | TrimStart()：去掉字符串中前面的空格                          |
+  | string.IsNullOrEmpty():判断一个字符串是否为空或者为null      |
+  | string.Join()：将数组按照指定的字符串连接，返回一个字符串。  |
 
 7. 字符串格式化
 
-	> ```c#
-	> //格式化
-	> int a=10;
-	> int b=55;
-	> Console.WriteLine(string.Format("{0}{1}{0}",a,b));
-	> //输出结果为105510
-	> //格式化输出的同时，可以在{}内的索引后加上标识，来表示别的意思
-	> //例如
-	> int a=10;
-	> Console.WriteLine(string.Format("{0:c}",a));
-	> //输出结果为 ￥1.00
-	> //:c就表示为货币
-	> ```
-	>
-	> [字符串格式化更多表达](http://cnblogs.com/net-sky/p/10250880.html)
+  > ```c#
+  > //格式化
+  > int a=10;
+  > int b=55;
+  > Console.WriteLine(string.Format("{0}{1}{0}",a,b));
+  > //输出结果为105510
+  > //格式化输出的同时，可以在{}内的索引后加上标识，来表示别的意思
+  > //例如
+  > int a=10;
+  > Console.WriteLine(string.Format("{0:c}",a));
+  > //输出结果为 ￥1.00
+  > //:c就表示为货币
+  > ```
+  >
+  > [字符串格式化更多表达](http://cnblogs.com/net-sky/p/10250880.html)
 
 
 
@@ -2604,7 +2604,84 @@ task的创建
 
 **注意**：使用此类需要引入`System.IO`  
 
+1. 对文件的操作
 
+  对文件操作一般有两种方式分别是静态方法,和实例方法
+
+  静态方法属于静态类File,实例方法则属于FileInfo
+
+  - 实例方法
+
+  	```c#
+  	//需要操作的文件的路径为D:\0.code\c#\对文件的操作\temp.txt
+  	FileInfo myFile = new FileInfo("D:\\0.code\\c#\\对文件的操作\\temp.txt");
+  	myFile.CopyTo(@"D:\0.code\c#\对文件的操作\temp1.txt");
+  	//此方法将对象文件复制到指定路径并命名
+  	```
+
+  - 静态方法
+
+  	```c#
+  	//需要操作的文件的路径为D:\0.code\c#\对文件的操作\temp.txt
+  	File.Copy("D:\\0.code\\c#\\对文件的操作\\temp.txt", @"D:\0.code\c#\对文件的操作\temp1.txt");
+  	```
+
+  	上文中`"D:\\0.code\\c#\\对文件的操作\\temp.txt"`与`@"D:\0.code\c#\对文件的操作\temp1.txt"`是等效的[^字符串前加@]
+
+2. 对文件夹的操作
+
+  对文件夹的操作同上,也分为静态方法和实例方法
+
+  对文件操作一般有两种方式分别是静态方法,和实例方法
+
+  静态方法属于静态类Directory,实例方法则属于DirectoryInfo
+
+  - 实例方法
+
+  	```c#
+  	//需要创建的文件夹的路径为D:\0.code\c#\对文件的操作\
+  	//创建的文件夹叫做newfolder
+  	DirectoryInfo myfolder = new DirectoryInfo(@"D:\0.code\c#\对文件的操作\newfolder");
+  	myfolder.Create();
+  	```
+
+  - 静态方法
+
+  	```c#
+  	//需要创建的文件夹的路径为D:\0.code\c#\对文件的操作\
+  	//创建的文件夹叫做newfolder
+  	Directory.CreateDirectory(@"D:\0.code\c#\对文件的操作\newfolder");
+  	```
+
+3. 路径
+
+  - 绝对路径(完整路径)
+
+  	绝对路径是将要操作的文件路径完整写出,从盘符开始,到文件
+
+  	优点:可以保证读取文件的正确
+
+  	缺点:兼容性极差!
+
+  - 相对路径
+
+  	相对路径是以程序执行的路径为准,写一个相对的路径
+
+  	相对路径的三种形式:
+
+  	```
+  	//以下演示中,均以D:\notes\temp.txt为准
+  	//同级的文件处于notes文件夹中的-test.txt
+  	.\test.txt
+  	//上一级处于D:\中的-test.txt
+  	..\test.txt
+  	//下一级处于D:\notes\myFolder中的-test.txt
+  	.\myFolder\test.txt
+  	```
+
+4. Filelnfo和DirectoryInfo的常用属性方法
+
+	[常用属性及其方法](.\supplement\Filelnfo和Directorylnfo类常用属性.md)
 
 ## 11.DEBUG
 
