@@ -300,6 +300,8 @@ ___
 
   > [^字符串前加@]:字符串前加@表示强制不转译。
   >
+  > 字符串前加@表示强制不转译。
+  >
   > 如果你的字符串中有大量的\字符，而不是想用转义，那就写@来取消\转义字符。
 
 2. **字符串本质**
@@ -2075,6 +2077,8 @@ ___
 	>
 	> [^后台线程]: 后台线程服务于前台线程，当前台线程全部关闭时，无论后台线程有没有运行完，都会强制中断
 	>
+	> **后台线程** 服务于前台线程，当前台线程全部关闭时，无论后台线程有没有运行完，都会强制中断
+	>
 	> ***一般情况下***，Thread类创建的线程为前台线程，线程池内的线程都是后台线程
 	>
 	> 使用Thread创建线程时，可以通过`IsBackground`来设置是否为前台线程，例如:
@@ -2612,21 +2616,23 @@ task的创建
 
   - 实例方法
 
-  	```c#
-  	//需要操作的文件的路径为D:\0.code\c#\对文件的操作\temp.txt
-  	FileInfo myFile = new FileInfo("D:\\0.code\\c#\\对文件的操作\\temp.txt");
-  	myFile.CopyTo(@"D:\0.code\c#\对文件的操作\temp1.txt");
-  	//此方法将对象文件复制到指定路径并命名
-  	```
+```c#
+//需要操作的文件的路径为D:\0.code\c#\对文件的操作\temp.txt
+FileInfo myFile = new FileInfo("D:\\0.code\\c#\\对文件的操作\\temp.txt");
+myFile.CopyTo(@"D:\0.code\c#\对文件的操作\temp1.txt");
+//此方法将对象文件复制到指定路径并命名
+```
+
+
 
   - 静态方法
 
-  	```c#
-  	//需要操作的文件的路径为D:\0.code\c#\对文件的操作\temp.txt
-  	File.Copy("D:\\0.code\\c#\\对文件的操作\\temp.txt", @"D:\0.code\c#\对文件的操作\temp1.txt");
-  	```
+```c#
+//需要操作的文件的路径为D:\0.code\c#\对文件的操作\temp.txt
+File.Copy("D:\\0.code\\c#\\对文件的操作\\temp.txt", @"D:\0.code\c#\对文件的操作\temp1.txt");
+```
 
-  	上文中`"D:\\0.code\\c#\\对文件的操作\\temp.txt"`与`@"D:\0.code\c#\对文件的操作\temp1.txt"`是等效的[^字符串前加@]
+上文中`"D:\\0.code\\c#\\对文件的操作\\temp.txt"`与`@"D:\0.code\c#\对文件的操作\temp1.txt"`是等效的[^字符串前加@]
 
 2. 对文件夹的操作
 
@@ -2638,46 +2644,48 @@ task的创建
 
   - 实例方法
 
-  	```c#
-  	//需要创建的文件夹的路径为D:\0.code\c#\对文件的操作\
-  	//创建的文件夹叫做newfolder
-  	DirectoryInfo myfolder = new DirectoryInfo(@"D:\0.code\c#\对文件的操作\newfolder");
-  	myfolder.Create();
-  	```
+```c#
+//需要创建的文件夹的路径为D:\0.code\c#\对文件的操作\
+//创建的文件夹叫做newfolder
+DirectoryInfo myfolder = new DirectoryInfo(@"D:\0.code\c#\对文件的操作\newfolder");
+myfolder.Create();
+```
+
+
 
   - 静态方法
 
-  	```c#
-  	//需要创建的文件夹的路径为D:\0.code\c#\对文件的操作\
-  	//创建的文件夹叫做newfolder
-  	Directory.CreateDirectory(@"D:\0.code\c#\对文件的操作\newfolder");
-  	```
+```c#
+//需要创建的文件夹的路径为D:\0.code\c#\对文件的操作\
+//创建的文件夹叫做newfolder
+Directory.CreateDirectory(@"D:\0.code\c#\对文件的操作\newfolder");
+```
+
+
 
 3. 路径
 
   - 绝对路径(完整路径)
 
-  	绝对路径是将要操作的文件路径完整写出,从盘符开始,到文件
-
-  	优点:可以保证读取文件的正确
-
-  	缺点:兼容性极差!
+​	绝对路径是将要操作的文件路径完整写出,从盘符开始,到文件
+​	优点:可以保证读取文件的正确
+​	缺点:兼容性极差!
 
   - 相对路径
 
-  	相对路径是以程序执行的路径为准,写一个相对的路径
+	相对路径是以程序执行的路径为准,写一个相对的路径
 
-  	相对路径的三种形式:
+	相对路径的三种形式:
 
-  	```
-  	//以下演示中,均以D:\notes\temp.txt为准
-  	//同级的文件处于notes文件夹中的-test.txt
-  	.\test.txt
-  	//上一级处于D:\中的-test.txt
-  	..\test.txt
-  	//下一级处于D:\notes\myFolder中的-test.txt
-  	.\myFolder\test.txt
-  	```
+	```c#
+	//以下演示中,均以D:\notes\temp.txt为准
+	//同级的文件处于notes文件夹中的-test.txt
+	.\test.txt
+	//上一级处于D:\中的-test.txt
+	..\test.txt
+	//下一级处于D:\notes\myFolder中的-test.txt
+	.\myFolder\test.txt
+	```
 
 4. Filelnfo和DirectoryInfo的常用属性方法
 
@@ -2749,12 +2757,4 @@ task的创建
   > 注意：
   >
   > **try…catch…finally`语句中，`catch`和`finally`两个最少存在一个，并且`finally`最多只能有一个**
-
-
-
-
-
-
-
-
 
