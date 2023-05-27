@@ -5,7 +5,7 @@ public static string Readjson(string key)
     System.IO.StreamReader file = System.IO.File.OpenText(jsonfile);
     JsonTextReader reader = new JsonTextReader(file);
     JObject o = (JObject)JToken.ReadFrom(reader);
-    var value = o[key].ToString();
+    var value = o[key].ToString();//可以不tostring
     return value;
 }
 ```
