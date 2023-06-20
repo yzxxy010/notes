@@ -2689,7 +2689,77 @@ Directory.CreateDirectory(@"D:\0.code\c#\对文件的操作\newfolder");
 
 4. Filelnfo和DirectoryInfo的常用属性方法
 
-	[常用属性及其方法](.\supplement\Filelnfo和Directorylnfo类常用属性.md)
+	| 属性                        | 说明                                 |
+	| --------------------------- | ------------------------------------ |
+	| CreationTime                | 创建文件或文件夹的时间               |
+	| DirectoryName(用于FileInfo) | 包含文件夹的完整路径                 |
+	| Parent(用于DirectoryInfo)   | 指定子目录的父目录                   |
+	| Exists                      | 文件或文件夹是否存在                 |
+	| Extension                   | 文件的扩展名，对于文件夹，它返回空白 |
+	| FullName                    | 文件或文件夹的完整路径名             |
+	| LastAccessTime              | 最后一次访问文件或文件夹的时间       |
+	| LastWriteTime               | 最后一个修改文件或文件夹的时间       |
+	| Name                        | 文件或文件夹的名称                   |
+	| Root（仅用于DirectoryInfo） | 路径的根部分                         |
+	| Length（仅用于FileInfo）    | 返回文件的大小（以字节为单位）       |
+	
+	| 方法                 | 说明                                                         |
+	| -------------------- | ------------------------------------------------------------ |
+	| Create()             | 创建给定名称的文件夹或者空文件，对于FileInfo,该方法会返回一个流 对象，以便于写入文件 |
+	| Delete()             | 删除文件或文件夹。对于文件夹有一个可以递归的Delete选项       |
+	| MoveTo()             | 移动或重命名文件或文件夹                                     |
+	| CopyTo()             | (只用于FileInfo)复制文件，文件夹没有复制方法，如果想要复制完整的 目录树，需要单独复制每个文件和文件夹 |
+	| GetDirectories()     | (只适用于DirectoryInfo)返回DirectoryInfo对象数组，该数组 表示文件夹中包含的所有文件夹 |
+	| GetFiles()           | (只适用于DirectoryInfo)返回FileInfo对象数组，该数组表示 文件夹中所有的文件 |
+	| GetFileSystemInfos() | (只适用于DirectoryInfo)返回FileInfo和DirectoryInfo对象， 它把文件夹中包含的所有对象表示为一个FileSystemInfo引用数组 |
+	
+	
+
+### 2.path类
+
+Path类**不可以实例化**，Path类提供了一些静态方法，可以更容易的对路径名执行操作
+
+Path类常用方法:
+
+| 方法                                          | 说明                                                 |
+| --------------------------------------------- | ---------------------------------------------------- |
+| Path.GetFileName(string path)                 | 获得指定的路径文件的名字和扩展名。                   |
+| Path.GetFileNameWithoutExtension(string path) | 获得指定的路径文件的名字，但是不包含扩展名。         |
+| Path.GetExtension(string path)                | 获得指定的路径文件的扩展名                           |
+| Path.GetDirectoryName(string path)            | 获得指定的路径文件所在的文件夹的名称                 |
+| Path.GetFullPath(string path)                 | 获得指定路径文件所在的全路径。(绝对路径)             |
+| Path.Combine(params string[] paths)           | 将字符串数组组合成一个路径。(连接两个字符串作为路径) |
+
+### 3.File类
+
+1. 常用方法
+
+| 方法                                                         | 说明                                                         |
+| ------------------------------------------------------------ | ------------------------------------------------------------ |
+| File.Create(string path)                                     | 在指定的路径中创建文件或覆盖文件                             |
+| File.Delete(string path)                                     | 删除指定的文件                                               |
+| File.Copy(string sourceFileName,string destFileName,bool overwrite) | 将现有的文件复制到一个新文件;（给第三个参数添加 true 表示当文件存在时允许覆盖，如果不添加 true，当文件存在时会报异常） |
+| File.Move(string sourceFileName ,string destFileName)        | 将指定文件移动(剪切)到新的位置，并提供指定新文件名。(注意新文件名不能在指定的路径中重复否则会报错) |
+| File.Exists(string path)                                     | 判断指定文件是否存在。存在返回True，不存在返回 False         |
+
+2. File类对文件的读取
+
+| 方法                                                         | 说明                                                         |
+| ------------------------------------------------------------ | ------------------------------------------------------------ |
+| File.ReadAllBytes(string path)                               | 打开一个指定文件，将文件的内容读入一个字符串中，然后关闭该文件。返回 byte[] 。<br>(注意字节数组我们并看不懂，需要把字节数组解码成字符串)。 |
+| Encoding.Default.GetString(byte[] bytes)                     | **Encoding** 表示字节编码；**Default** 表示编码格式(比如也可以为`Encoding.ASCII`)<br />`byte[] buffer = File.ReadAllBytes(@"D:\paths\gaosan\gaosan.txt");`<br />`string  str = Encoding.Default.GetString(buffer);` |
+| File.ReadAllLines(string path)<br />File.ReadAllLines(string path, Encoding encoding); | 打开一个文件，读取文件的所有行，然后关闭该文件。（2个重载）<br />打开一个文件，使用指定的编码读取文件的所有行，然后关闭该文件 |
+| File.ReadAllText(string path, Encoding encoding)             | 打开一个文件，使用指定的编码读取文件的所有字符串，然后关闭该文件 |
+
+3. File类对文件的写入
+
+| 方法                                                         | 说明                                                         |
+| ------------------------------------------------------------ | ------------------------------------------------------------ |
+| File.WriteAllBytes(sring path,byte[] bytes)                  | 创建一个新文件，在其中写入指定的字节数组，然后关闭文件，如果目标文件已存在，则覆盖该文件 |
+| File.WriteAllLines(string path, string[] contents)<br />File.WriteAllLines(string path, string[] contents, Encoding encoding); | 创建一个新文件，如果已经存在则覆盖，在其中写入指定的字符串数组 。 (一行一行的写入对应字符串数组元素)<br />此方法有四个重载，我们可以在第三个参数指定个编码格式(防止写入字符为乱码) |
+| File.WriteAllText(string path,string contents)               | 创建一个新文件，如果已经存在则覆盖，在其中写入指定的字符串   |
+
+
 
 ## 11.DEBUG
 
